@@ -1,5 +1,6 @@
 package massimiliano.AssegnaDispositivo.Service;
 
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import massimiliano.AssegnaDispositivo.Entities.Utente;
@@ -39,7 +40,7 @@ public class UtenteService {
         newUtente.setName(body.name());
         newUtente.setSurname(body.surname());
         newUtente.setEmail(body.email());
-        newUtente.setDataDiNascita(body.dataDiNascita());
+        newUtente.setUsername(body.username());
         return utenteRepository.save(newUtente);
     }
 
@@ -59,6 +60,7 @@ public class UtenteService {
         found.setId(id);
         found.setName(body.getName());
         found.setSurname(body.getSurname());
+        found.setUsername(body.getUsername());
         return found;
     }
 

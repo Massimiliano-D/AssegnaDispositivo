@@ -16,8 +16,8 @@ public class Dispositivo {
     private int id;
     private String tipo;
     private String stato;
-    private int tempoDiassegnazione;
+    
     @ManyToOne
-    @JoinColumn(name = "utente_id", nullable = false)
+    @JoinColumn(name = "utente_id")
     private Utente utente;
 }
