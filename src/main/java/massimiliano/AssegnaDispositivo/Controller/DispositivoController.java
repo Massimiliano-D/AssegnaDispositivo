@@ -46,7 +46,7 @@ public class DispositivoController {
     }
 
     @PutMapping("/assign/device={deviceId}&user={userId}")
-    public void assignDevice(@PathVariable int deviceId, @PathVariable int userId) throws ChangeSetPersister.NotFoundException {
-        dispositivoService.AssignDeviceToUser(userId, deviceId);
+    public void assignDevice(@PathVariable int dispositivoId, @PathVariable int utenteId) throws ChangeSetPersister.NotFoundException {
+        dispositivoService.AssignDeviceToUser(dispositivoId, utenteId);
     }
 }

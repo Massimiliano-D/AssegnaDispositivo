@@ -59,8 +59,8 @@ public class DispositivoService {
         dispositivoRepository.delete(found1);
     }
 
-    public void AssignDeviceToUser(int userId, int deviceId) throws ChangeSetPersister.NotFoundException {
-        Dispositivo target = dispositivoRepository.findById(deviceId).orElseThrow(ChangeSetPersister.NotFoundException::new);
+    public void AssignDeviceToUser(int utenteId, int dispositivoId) throws ChangeSetPersister.NotFoundException {
+        Dispositivo target = dispositivoRepository.findById(dispositivoId).orElseThrow(ChangeSetPersister.NotFoundException::new);
         if (target.getStato().equals("assegnato")) {
             throw new BadRequestException("il dispositivo e' gia assegnato");
         } else if (target.getStato().equals("manutenzione")) {
@@ -68,7 +68,7 @@ public class DispositivoService {
         } else if (target.getStato().equals("dismesso")) {
             throw new BadRequestException("il dispositivo e' stato dismesso");
         } else if (target.getStato().equals("disponibile")) {
-            Utente owner = utenteRepository.findById(userId).orElseThrow(ChangeSetPersister.NotFoundException::new);
+            Utente owner = utenteRepository.findById(utenteId).orElseThrow(ChangeSetPersister.NotFoundException::new);
             target.setUtente(owner);
             target.setStato("assegnato");
             dispositivoRepository.save(target);
